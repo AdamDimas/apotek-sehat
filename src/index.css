@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  /* Netral & permukaan */
+  --color-canvas: #f4f7f6;
+  --color-surface: #ffffff;
+  --color-ink: #152420;
+  --color-muted: #687874;
+  --color-line: #e4eae8;
+
+  /* Warna utama (hijau apotek) */
+  --color-primary: #0e7c6b;
+  --color-primary-ink: #0a5a4e;
+  --color-primary-soft: #e4f1ee;
+
+  /* Sidebar */
+  --color-sidebar: #0e3f37;
+  --color-sidebar-2: #0b332c;
+
+  /* Status stok */
+  --color-ok: #15803d;
+  --color-ok-soft: #e7f4ec;
+  --color-warn: #b45309;
+  --color-warn-soft: #faeedc;
+  --color-danger: #c0271f;
+  --color-danger-soft: #f9e7e5;
+
+  /* Golongan "Bebas Terbatas" */
+  --color-brandblue: #1d6fb8;
+  --color-brandblue-soft: #e5f0f8;
+
+  /* Font */
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
