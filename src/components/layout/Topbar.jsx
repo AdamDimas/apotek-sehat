@@ -6,7 +6,7 @@ export default function Topbar() {
   const { pathname } = useLocation()
   const { user, logout } = useAuth()
   const current = NAV.find((n) => pathname.startsWith(n.to))
-  const roleLabel = user?.role === 'kasir' ? 'Kasir' : 'Apoteker Penanggung Jawab'
+  const roleLabel = user?.role === 'admin' ? 'Administrator' : 'Staff'
 
   return (
     <header className="h-16 shrink-0 flex items-center justify-between px-7 border-b border-line bg-surface">
@@ -16,11 +16,11 @@ export default function Topbar() {
       </div>
       <div className="flex items-center gap-4">
         <div className="text-right leading-tight">
-          <div className="font-semibold text-[13px]">{user?.nama}</div>
+          <div className="font-semibold text-[13px]">{user?.name}</div>
           <div className="text-[11.5px] text-muted">{roleLabel}</div>
         </div>
         <div className="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center font-semibold">
-          {(user?.nama || 'U').charAt(0)}
+          {(user?.name || 'U').charAt(0)}
         </div>
         <button onClick={logout} title="Keluar" className="text-muted hover:text-danger p-2 rounded-lg hover:bg-canvas">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
