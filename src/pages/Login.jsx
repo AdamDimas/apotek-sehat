@@ -8,13 +8,15 @@ export default function Login() {
   const { login } = useAuth()
   const nav = useNavigate()
   const loc = useLocation()
-  const [u, setU] = useState(''); const [p, setP] = useState('')
-  const [err, setErr] = useState(''); const [loading, setLoading] = useState(false)
+  const [email, setEmail] = useState('')
+  const [p, setP] = useState('')
+  const [err, setErr] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const submit = async () => {
     setErr(''); setLoading(true)
     try {
-      await login(u.trim(), p)
+      await login(email.trim().toLowerCase(), p)
       nav(loc.state?.from?.pathname || '/dashboard', { replace: true })
     } catch (e) { setErr(e.message) } finally { setLoading(false) }
   }
@@ -34,8 +36,8 @@ export default function Login() {
 
         <div className="mt-6 space-y-3" onKeyDown={(e) => e.key === 'Enter' && submit()}>
           <label className="block">
-            <span className="text-[12.5px] font-medium">Username</span>
-            <div className="mt-1"><Input value={u} onChange={(e) => setU(e.target.value)} placeholder="apoteker" /></div>
+            <span className="text-[12.5px] font-medium">Email</span>
+            <div className="mt-1"><Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="nama@apotek.com" /></div>
           </label>
           <label className="block">
             <span className="text-[12.5px] font-medium">Password</span>
@@ -48,7 +50,7 @@ export default function Login() {
         </div>
 
         <p className="mt-4 text-[11.5px] text-muted text-center">
-          Mode contoh — coba <span className="font-mono">apoteker/apoteker</span> atau <span className="font-mono">kasir/kasir</span>
+          Mode contoh — coba <span className="font-mono">admin@apotek.com</span> atau <span className="font-mono">staff@apotek.com</span> (password: sama dengan sebelum @)
         </p>
       </div>
     </div>

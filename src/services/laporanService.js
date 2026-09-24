@@ -10,3 +10,8 @@ export async function getPenjualan(dari, sampai) {
   const qs = new URLSearchParams({ dari, sampai }).toString()
   return api(`/laporan/penjualan?${qs}`)
 }
+
+export async function getRingkasanHariIni() {
+  if (USE_MOCK) { await delay(300); return PENJUALAN_HARIAN[PENJUALAN_HARIAN.length - 1] }
+  return api('/laporan/hari-ini')
+}
