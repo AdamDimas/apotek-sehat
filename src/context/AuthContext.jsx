@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState } from 'react'
 import { login as loginApi } from '../services/authService'
 import { clearToken } from '../services/api'
@@ -10,12 +11,13 @@ const readUser = () => { try { return JSON.parse(localStorage.getItem('user')) }
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(readUser)
 
-  const login = async (username, password) => {
-    const u = await loginApi(username, password)
+  const login = async (usernameOrEmail, password) => {
+    const u = await loginApi(usernameOrEmail, password)
     localStorage.setItem('user', JSON.stringify(u))
     setUser(u)
     return u
   }
+  
   const logout = () => {
     clearToken(); localStorage.removeItem('user'); setUser(null)
   }

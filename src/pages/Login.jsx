@@ -16,9 +16,15 @@ export default function Login() {
   const submit = async () => {
     setErr(''); setLoading(true)
     try {
-      await login(email.trim().toLowerCase(), p)
+      const loginResult = await login(email.trim().toLowerCase(), p)
+      // lanjut dari sini dam
       nav(loc.state?.from?.pathname || '/dashboard', { replace: true })
-    } catch (e) { setErr(e.message) } finally { setLoading(false) }
+    } catch (e) { 
+      setErr(e.message) 
+    } 
+    finally { 
+      setLoading(false) 
+    }
   }
 
   return (
